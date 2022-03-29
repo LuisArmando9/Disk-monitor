@@ -1,0 +1,35 @@
+﻿
+<mah:MetroWindow x:Class="DiskMonWithWPFUI.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:viewmodel="clr-namespace:DiskMonWithWPFUI.ViewModel"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 Title="Disk Monitor"
+                 ShowTitleBar="True"
+                 Width="800"
+                 Height="450"
+                 WindowStartupLocation="CenterScreen"
+                 mc:Ignorable="d">
+    <Window.Resources>
+        <viewmodel:MainViewModel x:Key="MainViewModel"/>
+        
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource MainViewModel}}">
+        <ListView Padding="10" ItemsSource="{Binding DiskIos}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" >
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn  Header="Time"  DisplayMemberBinding="{Binding Time}" />
+                    <GridViewColumn  Header="Disk"  DisplayMemberBinding="{Binding DiskNumber}" />
+                    <GridViewColumn Header="Sector"  DisplayMemberBinding="{Binding Sector}" />
+                    <GridViewColumn  Header="Request"  DisplayMemberBinding="{Binding Request}" />
+                    <GridViewColumn  Header="Length"  DisplayMemberBinding="{Binding Length}" />
+                    
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <!--  Your content  -->
+    </Grid>
+</mah:MetroWindow>
